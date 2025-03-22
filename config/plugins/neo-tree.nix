@@ -1,14 +1,19 @@
 {
-    plugins.neo-tree = {
-        enable = true;
-    };
+  plugins.neo-tree = {
+    enable = true;
 
-    keymaps = [
+#    lazyLoad.settings = {
+#     action = "Neotree toggle";
+#    keys = ["<leader>e"];
+#    };
+  };
+
+  keymaps = [
     {
-        mode = "n";
-        key = "<leader>e";
-        action = "<CMD>Neotree toggle<CR>";
-        options.desc = "Neotree";
-        }
-    ];
+      mode = "n";
+      key = "<leader>e";
+      action = "<CMD>Neotree toggle<CR>";
+      options.desc = "Neotree";
+    }
+  ];
 }

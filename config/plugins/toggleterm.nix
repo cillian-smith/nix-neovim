@@ -2,10 +2,10 @@
   plugins.toggleterm = {
     enable = true;
 
-    #    lazyLoad.settings = {
-    #      cmd = "ToggleTerm";
-    #      keys = ["<leader>t"];
-    #    };
+    lazyLoad.settings = {
+      cmd = "ToggleTerm";
+      keys = ["<leader>t"];
+    };
 
     settings = {
       direction = "float";
