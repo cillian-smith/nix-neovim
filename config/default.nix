@@ -3,9 +3,9 @@
     ./core.nix
     ./plugins
     ./completion
+    ./find.nix
     ./lsp
     ./formatting
-    #     ./bufferline.nix
     ./performance.nix
     ./options.nix
     ./keymaps.nix

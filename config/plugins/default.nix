@@ -1,5 +1,6 @@
 {
   imports = [
+    ./oil.nix
     ./neo-tree.nix
     ./bufferline.nix
     ./toggleterm.nix

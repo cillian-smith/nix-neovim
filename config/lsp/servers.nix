@@ -25,6 +25,10 @@
       enable = true;
       filetypes = ["toml"];
     };
+    gopls = {
+      enable = true;
+      filetypes = ["go"];
+    };
 
     # Add other language servers as needed
     # Example:
