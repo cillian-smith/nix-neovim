@@ -39,6 +39,13 @@
           # Lets you run `nix run .` to start nixvim
           default = nvim;
         };
+	 # This is the key part for making it runnable with nix run
+        apps = {
+          default = {
+            type = "app";
+            program = "${nvim}/bin/nvim";
+          };
+        };
       };
     };
 }
