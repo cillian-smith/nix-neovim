@@ -31,7 +31,9 @@
           module = {pkgs, ...}: {
             imports = [./config]; # Import your config directory
             # Add any extra packages you need
-            extraPackages = with pkgs; [];
+            extraPackages = with pkgs; [
+              wl-clipboard
+            ];
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
