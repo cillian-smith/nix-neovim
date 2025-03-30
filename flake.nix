@@ -9,6 +9,7 @@
 
   outputs = {
     nixvim,
+    nixpkgs,
     flake-parts,
     ...
   } @ inputs:
@@ -18,14 +19,19 @@
       ];
 
       perSystem = {system, ...}: let
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
         nixvimLib = nixvim.lib.${system};
         nixvim' = nixvim.legacyPackages.${system};
+        # Key change: Use pkgs instead of system and structure the module differently
         nixvimModule = {
-          inherit system; # or alternatively, set `pkgs`
-          module = import ./config; # import the module directly
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
-          extraSpecialArgs = {
-            # inherit (inputs) foo;
+          inherit pkgs; # Pass pkgs, not system
+          module = {pkgs, ...}: {
+            imports = [./config]; # Import your config directory
+            # Add any extra packages you need
+            extraPackages = with pkgs; [];
           };
         };
         nvim = nixvim'.makeNixvimWithModule nixvimModule;
@@ -38,13 +44,6 @@
         packages = {
           # Lets you run `nix run .` to start nixvim
           default = nvim;
-        };
-	 # This is the key part for making it runnable with nix run
-        apps = {
-          default = {
-            type = "app";
-            program = "${nvim}/bin/nvim";
-          };
         };
       };
     };
